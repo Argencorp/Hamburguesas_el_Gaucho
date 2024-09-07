@@ -1,10 +1,10 @@
 import React from 'react';
-import LoginRegister from './components/LoginRegister';
+import Header from './components/header/Header';
 
 function App() {
   return (
     <div className="App">
-      <LoginRegister/>
+      <Header/>
     </div>
   );
 }
