@@ -30,7 +30,7 @@ header{
   justify-content: space-around;
   align-items: end;
   flex-wrap: wrap;
-  position: fixed;
+
   box-sizing: border-box;
   background-color: rgb(151, 239, 255);
   box-shadow: 0 5px 10px rgb(146, 146, 146);
@@ -58,4 +58,3 @@ header ul{
 header ul li {
   padding: 2vh;
 }
-

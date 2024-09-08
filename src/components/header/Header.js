@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function Header() {
     return (
@@ -10,10 +11,10 @@ function Header() {
         </a>
         <ul>
             <li>
-                <a href='#' >Iniciar Sesion</a>
+                <Link to="/iniciar-sesion">Iniciar Sesion</Link>
             </li>
             <li>
-                <a href='#' >Registrarse</a>
+                <a href=''>Registrarse</a>
             </li>
             <div className='carrito'>
                 <img/>
