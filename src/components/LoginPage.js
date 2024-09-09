@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function LoginPage() {
-    const [email, setEmail] = useState("");
+    const [user, setUser] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [msg, setMsg] = useState("");
@@ -14,74 +14,86 @@ function LoginPage() {
 
     const handleInputChange = (e, type) =>{
         switch(type) {
-            case "email":
+            case "user":
                 setError("");
-                setEmail(e.target.value);
+                setUser(e.target.value);
                 if (e.target.value === ""){
-                    setError("no se indico un Email")
+                    setError("no se indicó un user");
                 }
                 break;
             case "password":
                 setError("");
                 setPassword(e.target.value);
                 if (e.target.value === ""){
-                    setError("no se indico una contraseña")
+                    setError("no se indicó una contraseña");
                 }
                 break;
             default:
-
+                break;
         }
     }
-    console.log('Email:', email);
-    console.log('Contraseña:', password);
-    }
 
-    function loginSubmit(){
-        if(email !== "" && password != ""){ 
-            var url = "http://localhost/react/login.php"
+    const loginSubmit = () => {
+        if(user !== "" && password !== ""){ 
+            const url = "http://localhost/react/login.php";
+            const headers = {
+                "Accept": "application/json",
+                "Content-type": "application/json"
+            };
+            const Data = {
+                user: user,
+                password: password
+            };
+            fetch(url, {
+                method: "POST",
+                headers: headers,
+                body: JSON.stringify(Data)
+            }).then((response) => response.json())
+            .then((response) => {
+                setMsg(response[0].result);
+            }).catch((err) => {
+                setError(err);
+                console.log(err);
+            });
         }
         else{
-            setError("")
+            setError("Todos los campos son requeridos");
         }
     }
 
     return (
-    <div className='form'>
-        <p>
-            {
-                error !== "" ?
-                <span className='error'>{error}</span> :
-                <span className='success'>{msg}</span>
-            }
-        </p>
-        <h2>Inicio de Sesion</h2>
-        <div>
-            <label>Email:</label>
-            <input 
-            type='email' 
-            value={email} 
-            onChange={(e) => handleInputChange(e, "email")} 
-            />
-        </div>
-        <div>
-            <label>Contraseña:</label>
-            <input 
-            type='password' 
-            value={password} 
-            onChange={(e) => handleInputChange(e, "password")} 
-            />
-        </div>
-        <div>
-            <label></label>
-            <input
-                type='submit'
-                defaultValue="Login"
-                className='button'
-                onClick={loginSubmit}
+        <div className='form'>
+            <p>
+                { error !== "" ? <span className='error'>{error}</span> : <span className='success'>{msg}</span> }
+            </p>
+            <h2>Inicio de Sesión</h2>
+            <div>
+                <label>user:</label>
+                <input 
+                    type='user' 
+                    value={user} 
+                    onChange={(e) => handleInputChange(e, "user")} 
                 />
+            </div>
+            <div>
+                <label>Contraseña:</label>
+                <input 
+                    type='password' 
+                    value={password} 
+                    onChange={(e) => handleInputChange(e, "password")} 
+                />
+            </div>
+            <div>
+                <label></label>
+                <input
+                    type='submit'
+                    defaultValue="Login"
+                    className='button'
+                    onClick={loginSubmit}
+                />
+            </div>
         </div>
-    </div>
     );
-
+}
 
 export default LoginPage;
