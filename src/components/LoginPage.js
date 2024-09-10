@@ -50,7 +50,12 @@ function LoginPage() {
                 body: JSON.stringify(Data)
             }).then((response) => response.json())
             .then((response) => {
-                setMsg(response[0].result);
+                if(response[0].result === "Usuario no valido" || response[0].result === "Contraseña incorrecta"){
+                    setError(response[0].result);
+                }
+                else{
+                    setMsg(response[0].result);
+                }
             }).catch((err) => {
                 setError(err);
                 console.log(err);

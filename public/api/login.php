@@ -23,10 +23,16 @@
             $res = mysqli_query($conn, $sql); 
 
             if(mysqli_num_rows($res) != 0){
-                $result = "Logeado correctamente";
+                $row = mysqli_fetch_array($res);
+                if($password != $row['password']) {
+                    $result = "Contraseña incorrecta";
+                }
+                else{
+                    $result = "Logeado correctamente";
+                }   
             }
             else{
-                $result = "";
+                $result = "Usuario no valido";
             }
         }
         else{
