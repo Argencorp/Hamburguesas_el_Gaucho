@@ -18,7 +18,7 @@ function LoginPage() {
                 setError("");
                 setUser(e.target.value);
                 if (e.target.value === ""){
-                    setError("no se indicó un user");
+                    setError("no se indicó un usuario");
                 }
                 break;
             case "password":
@@ -57,7 +57,7 @@ function LoginPage() {
                     setMsg(response[0].result);
                 }
             }).catch((err) => {
-                setError(err);
+                setError(err.message); // Ahora solo mostramos el mensaje del error.
                 console.log(err);
             });
         }
@@ -73,7 +73,7 @@ function LoginPage() {
             </p>
             <h2>Inicio de Sesión</h2>
             <div>
-                <label>user:</label>
+                <label>Usuario:</label>
                 <input 
                     type='user' 
                     value={user} 
@@ -102,3 +102,4 @@ function LoginPage() {
 }
 
 export default LoginPage;
+
