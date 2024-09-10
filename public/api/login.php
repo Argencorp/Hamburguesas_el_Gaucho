@@ -7,7 +7,7 @@
 
     $conn = new mysqli("localhost", "react-user", "1234", "user");
     if(mysqli_connect_error()){
-        echo mysqli_connect_error():
+        echo mysqli_connect_error();
         exit();
     }
     else{
