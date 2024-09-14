@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Header from './components/header';
-import BurgerCard from './components/BurgerCard';
-import Cart from './components/Cart';
+import Header from './componentes/header';
+import BurgerCard from './componentes/BurgerCard';
+import Cart from './componentes/Cart';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const App = () => {
