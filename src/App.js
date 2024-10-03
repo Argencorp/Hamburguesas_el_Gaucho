@@ -8,7 +8,7 @@ const App = () => {
   const [cart, setCart] = useState([]);
 
   const burgers = [
-    { name: 'Hamburguesa Clásica', image: 'imagen_clasica.jpg', price: 500 },
+    { name: 'Hamburguesa Clásica', image: '/images/clasica.jpg' , price: 500 },
     { name: 'Hamburguesa Especial', image: 'imagen_especial.jpg', price: 650 },
     { name: 'Hamburguesa Vegetariana', image: 'imagen_vegetariana.jpg', price: 550 },
   ];
