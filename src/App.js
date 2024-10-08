@@ -9,8 +9,8 @@ const App = () => {
 
   const burgers = [
     { name: 'Hamburguesa Clásica', image: '/images/clasica.jpg' , price: 500 },
-    { name: 'Hamburguesa Especial', image: '/images/especial.png', price: 650 },
-    { name: 'Hamburguesa Vegetariana', image: 'public/images/vegan.jpg', price: 550 },
+    { name: 'Hamburguesa Especial', image: '/images/special.jpg', price: 650 },
+    { name: 'Hamburguesa Vegetariana', image: '/images/vegan.jpg', price: 550 },
   ];
 
   const addToCart = (burger) => {
