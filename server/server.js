@@ -3,24 +3,42 @@ const mysql = require("mysql");
 const cors = require("cors"); 
 
 const app = express();
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
+
 
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "crud"
+    database: "signup"
+})
+
+app.post("/signup", (req, res) =>{
+    const sql =  "INSERT INTO `login`(`name`, `email`, `password`) VALUES ('" + req.body.name + "', '" + req.body.email + "', '" + req.body.password + "')";
+    const values = [
+        req.body.name,
+        req.body.email,
+        req.body.password
+    ]
+    db.query(sql, [values], (err, data) => {
+        if(err) {
+            return res.json("Error");
+        }
+        return res.json(data);
+    })
 })
 
 app.post("/login", (req, res) =>{
-    const sql = "SELECT * FROM login WHERE username = ? AND password = ?";
-    db.query(sql, [req.body.email, req.body.password ], (err, data) => {
-        if(err) return res.json("El login fallo");
+    const sql = "SELECT * FROM login WHERE `email` = ? AND `password` = ?";
+    db.query(sql, [req.body.email, req.body.password], (err, data) => {
+        if(err) {
+            return res.json("Error");
+        }
         if(data.length > 0) {
-            return res.json("Login exitoso")
+            return res.json("Exito");
         } else {
-            return res.json("no record")
+            return res.json("Fallo")
         }
     })
 })

@@ -4,6 +4,9 @@ import BurgerCard from './componentes/BurgerCard';
 import Cart from './componentes/Cart';
 import { Container, Row, Col } from 'react-bootstrap';
 import Login from './componentes/Login';
+import Signup from './componentes/Signup';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Home from './Home';
 
 
 const App = () => {
@@ -26,8 +29,14 @@ const App = () => {
 
   return (
     <div>
-      <Login/>
       <Header />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Login/>}></Route>
+          <Route path='/signup' element={<Signup/>}></Route>
+          <Route path='/home' element={<Home/>}></Route>
+        </Routes>
+      </BrowserRouter>
       <Container>
         <Row>
           {burgers.map((burger, index) => (
