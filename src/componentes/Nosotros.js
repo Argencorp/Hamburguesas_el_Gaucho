@@ -10,11 +10,12 @@ const Nosotros = () => {
       <p>
         Fundada en 2024, nuestra misión es lograr una buena reputacion entre los fanaticos de las hamburguesas.
       </p>
-      <ul>
+      <p>Fundadores:</p>
+      <ol>
         <li>Marcelino Leandro</li>
         <li>Tessari Ignacio</li>
         <li>Goral Uziel</li>
-      </ul>
+      </ol>
     </div>
   );
 };
